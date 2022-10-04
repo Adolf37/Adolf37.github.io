@@ -1,0 +1,84 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    background-color: #181818;
+    color:#2B9194;
+}
+
+#image{
+    width:180px;
+    height: 180px;
+    background-image: url("./cat.png");
+    background-size: cover;
+    float: left;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+a{
+    text-decoration: none;
+    color:#00C6CF;
+}
+
+#project-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top:20px;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 30px;
+}
+
+.title{
+    font-size: 1.4rem;
+}
+
+.fa-gears{
+    font-size: 3.6rem;
+    color:#D3FBD8;
+}
+
+.fa-people-group{
+    font-size: 3.6rem;
+    color:#D3FBD8
+}
+
+.skill{
+    font-size: 1.3rem;
+    color:#FAF7FF;
+}
+
+
+#skills{
+    
+    display: flex;
+    justify-content: space-between;
+    margin-right: 100px;
+    margin-top:40px;
+    margin-left: 100px;
+    
+}
+
+#project-part{
+    background-color: #34313134;
+}
+
+p{
+    font-size: 1.9rem;
+    margin-left: 30px;
+    color:#D3FBD8;
+}
+
+#job{
+    font-size: 1.1rem;
+}
+
+.project{
+    font-size: 1.25rem;
+    text-decoration: inherit;
+}
