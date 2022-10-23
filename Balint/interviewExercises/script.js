@@ -1512,7 +1512,7 @@ print(Solution().checkPerfectNumber(28))
 # 28 = 1 + 2 + 4 + 7 + 14
 */
 
-///*
+/*
 const perfectNumber = (num)=>{
     let divisors = [];
     let i = 1;
@@ -1540,6 +1540,224 @@ const perfectNumber = (num)=>{
 
 perfectNumber(28)
 
-//*/
+*/
+
 //--------------------------------------------------------------------------------------------
 //40)
+/*
+iven an integer, reverse the digits.
+ Do not convert the integer into a string and reverse it.
+
+def reverse_integer(num):
+  # Fill this in.
+  
+print(reverse_integer(135))
+# 531
+
+print(reverse_integer(-321))
+# -123
+*/
+
+/*
+function reverse_integer(num){
+    let negative = false;
+    let reverse = 0;
+    if(num < 0){
+        num = num * (-1);
+        negative = true;
+    }
+
+    while(num !== 0){
+        //console.log(num % 10);
+        reverse = (reverse * 10) + (num % 10)
+        num = Math.floor(num / 10);
+    }
+    if(negative == true){
+        reverse = reverse * (-1);
+    }
+    console.log('forditva: ',reverse)
+}
+
+reverse_integer(135);
+reverse_integer(-321);
+*/
+
+//--------------------------------------------------------------------------------------------
+//41)
+/*
+Return the longest run of 1s for a given integer n's binary representation.
+
+Example:
+Input: 242
+Output: 4
+242 in binary is 0b11110010, so the longest run of 1 is 4.
+
+def longest_run(n):
+  # Fill this in.
+
+print longest_run(242)
+# 4
+*/
+
+/*
+const longest_run = (num)=>{
+    let binaryForm = [];
+
+    while(num / 2 !== 0){
+        binaryForm.push(num % 2);
+        num = Math.floor(num / 2);
+    }
+    binaryForm = binaryForm.reverse();
+
+    let lrun=0,run=0;
+
+    for(let i = 0;i<binaryForm.length;i++){
+        if(binaryForm[i]===1){
+            run++;
+        }else{
+            if(run > lrun){
+                lrun = run;
+                run = 0;
+            }
+        }
+    }
+    console.log(binaryForm.join(' '));
+    console.log("Longest run: ",lrun);
+    
+}
+
+longest_run(242);
+*/
+
+//--------------------------------------------------------------------------------------------
+//42)
+/*
+Given 3 sorted lists, find the intersection of those 3 lists.
+
+Here's an example and some starter code.
+
+def intersection(list1, list2, list3):
+  # Fill this in.
+  
+print(intersection([1, 2, 3, 4], [2, 4, 6, 8], [3, 4, 5]))
+# [4]
+*/
+/*
+const intersection = (a1,a2,a3)=>{
+    let i;
+    let its = [];
+    for(i=0;i<a1.length;i++){
+        if(a2.includes(a1[i]) && a3.includes(a1[i])){
+            its.push(a1[i]);
+        }
+    }
+    console.log(its);
+}
+
+intersection([1, 2,37, 3, 4], [2, 4, 6, 8,37], [37, 4, 5])
+*/
+
+//--------------------------------------------------------------------------------------------
+//43)
+
+/*
+Create a class that initializes with a list of numbers and has one method called sum. sum should take in two parameters,
+ start_idx and end_idx and return the sum of the list from start_idx (inclusive) to end_idx` (exclusive).
+
+You should optimize for the sum method.
+
+Here's the class:
+
+class ListFastSum:
+  def __init__(self, nums):
+    self.nums = nums
+
+  def sum(self, start_idx, end_idx):
+    # Fill this in.
+
+print(ListFastSum([1, 2, 3, 4, 5, 6, 7]).sum(2, 5))
+# 12 because 3 + 4 + 5 = 12
+*/
+/*
+class ListFastSum{
+    constructor(nums){
+        this.nums = nums;
+    }
+
+    sum(start_idx, end_idx){
+        let s = 0;
+        while(start_idx<end_idx){
+            s+=this.nums[start_idx];
+            start_idx++;
+        }
+        console.log(s);
+    }
+}
+
+let lfs = new ListFastSum([1, 2, 3, 4, 5, 6, 7]);
+
+lfs.sum(2,5);
+*/
+
+//--------------------------------------------------------------------------------------------
+//44)
+
+/*
+You are the manager of a number of employees who all sit in a row. The CEO would like to give bonuses to all of your employees, but since the company did not perform so well this year the CEO would like to keep the bonuses to a minimum.
+
+The rules of giving bonuses is that:
+- Each employee begins with a bonus factor of 1x.
+- For each employee, if they perform better than the person sitting next to them, the employee is given +1 higher bonus (and up to +2 if they perform better than both people to their sides).
+
+Given a list of employee's performance, find the bonuses each employee should get.
+
+Example:
+Input: [1, 2, 3, 2, 3, 5, 1]
+Output: [1, 2, 3, 1, 2, 3, 1]
+Here's your starting point:
+
+def getBonuses(performance):
+  # Fill this in.
+
+print getBonuses([1, 2, 3, 2, 3, 5, 1])
+# [1, 2, 3, 1, 2, 3, 1]
+*/
+
+const getBonuses = (performance) =>{
+    let i;
+    let bonuses = [];
+    let rule;
+    for(i=0;i<performance.length;i++){
+        if(i===0){
+            if(performance[i]>performance[i+1]){
+                rule = 1 + 1;
+                bonuses.push(rule);
+                continue;
+            }
+        }
+        if(i===(performance.length - 1)){
+            if(performance[i]>performance[i-1]){
+                rule = 1 + 1;
+                bonuses.push(rule);
+                break;
+            }
+        }
+
+        if(performance[i]>performance[i-1] && performance[i] > performance[i+1]){
+            rule = 1 + 2;
+            bonuses.push(rule);
+            continue;
+        }
+        if(performance[i]>performance[i+1] || performance[i]>performance[i-1]){
+            rule = 1+1;
+            bonuses.push(rule);
+            continue;
+        }
+        rule = 1;
+        bonuses.push(1);
+    }
+    console.log(bonuses);
+
+}
+
+getBonuses([1, 2, 3, 2, 3, 5, 1]);
