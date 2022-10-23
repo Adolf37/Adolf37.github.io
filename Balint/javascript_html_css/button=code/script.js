@@ -27,7 +27,7 @@ mka.addEventListener('click',()=>{
             if(regex.test(el[i])){
                 pyA.innerHTML+=`${el[i]}]`
             }else{
-                pyA.innerHTML+=`"${el[i]}]"`
+                pyA.innerHTML+=`"${el[i]}"]`
             }
            
         }else{
