@@ -1,0 +1,44 @@
+
+#container{
+    display: flex;
+    justify-content:space-between ;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+#python{
+    background-color: rgb(100, 153, 153);
+    width: 50%;
+}
+
+#back{
+    position: fixed;
+    top:10px;
+    right: 10px;
+    font-size: 1.7em;
+}   
+
+#javascript{
+    background-color: rgb(141, 191, 141);
+    width: 50%;
+}
+
+#variabels{
+    display: none;
+    
+}
+
+#variabels.show{
+    display: block;
+}
+
+body{
+    background-color: rgba(189, 203, 216, 0.5);
+}
+
+button:hover{
+    cursor: pointer;
+}
+
