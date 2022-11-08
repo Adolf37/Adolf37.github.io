@@ -1,0 +1,77 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    overflow: hidden; /* ha a csovek kimennek akkor ne latszodjanak */
+    background-color: rgb(0, 0, 0);
+    color:white;
+}
+
+#back{
+    font-size: 1.5rem;
+    position: fixed;
+    top:0;
+    left:0;
+}
+
+.title{
+    z-index: 10; /*hogy minden felett jelenjen meg*/
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset:0; /* top,left,bottom,right tulajdonsagot 0 ra teszi*/
+    margin: 0;
+    flex-direction: column; /*hogy alaja keruljon*/
+    
+}
+
+.subtitle{
+    margin-top: .5rem;
+}
+
+.hide{
+    display: none;
+}
+
+.bird{
+    --bird-top: -1000; /*elrejtes ezt js-ben allitsuk tehat a szamot at kell konvertalni*/
+    --bird-size:60px;
+    background-color: rgb(6, 160, 19);
+    /*background-image: url('./lillaMadar.jpg');
+    background-size: cover;
+    background-position: center;*/
+    position: absolute;
+    width: var(--bird-size);
+    height: var(--bird-size);
+    left:var(--bird-size);
+    border-radius: 50%;
+    top: calc(var(--bird-top)*1px);/*atkonvertalas px-re*/
+}
+
+.pipe{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    width: calc(var(--pipe-width) * 1px);
+    left: calc(var(--pipe-left) * 1px);
+}
+
+.pipe > .segment{
+    position: absolute;
+    width: 100%;
+    background-color: rgb(215, 35, 7);
+}
+
+.pipe > .top{
+    top:0;
+    bottom:calc(var(--hole-top) * 1px);
+}
+
+
+.pipe > .bottom{
+    bottom: 0;
+    top:calc( 100vh - (var(--hole-top) * 1px) + calc(var(--hole-heigth) * 1px));
+}
