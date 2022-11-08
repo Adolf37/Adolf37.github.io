@@ -51,7 +51,7 @@ userInput.addEventListener('click',()=>{
     pyCode.append(pyInput);
 
     let jsInput = document.createElement('p');
-    jsInput.innerHTML = 'val = prompt("Enter your value:")';
+    jsInput.innerHTML = 'let val = prompt("Enter your value:")';
     jsCode.append(jsInput);
 })
 
