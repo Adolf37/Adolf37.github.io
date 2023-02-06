@@ -595,10 +595,22 @@ const idezetek = [
     , 
     "I'm not afraid of storms, for I'm learning how to sail my ship."
     ]
+function shuffleArray(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return idezetek;
+}
+
+shuffleArray(idezetek)
+
+
 const quoteDisplayElement = document.getElementById('quoteDisplay')
 const quoteInputElement = document.getElementById('quoteInput')
 const timer = document.getElementById('timer')
 
+let volt = []
 
 quoteInputElement.addEventListener('input', () =>{
     const arrayQuote = quoteDisplayElement.querySelectorAll('span')
@@ -624,12 +636,13 @@ quoteInputElement.addEventListener('input', () =>{
 })
 let i = 0;
 function getQuote(){
+
     i+=1
     if( i=== (idezetek.length)){
         i = 0;
     }
-    
-   return idezetek[i]
+    return idezetek[i]
+   
 }
 
 function renderNextQuote(){
